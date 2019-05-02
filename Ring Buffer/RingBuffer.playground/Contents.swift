@@ -29,6 +29,15 @@ public struct RingBuffer<T> {
     }
     return array[wrapped: readIndex]
   }
+  
+  /**
+     Get the first element available for reading from the RingBuffer without removing it.
+     - Returns: nil in case there are no more elements stored in the RingBuffer, otherwise the first element available for reading.
+     */
+    public func peek() -> T? {
+        
+        return self.buffer[wrapped: self.readIndex]
+    }
 
   fileprivate var availableSpaceForReading: Int {
     return writeIndex - readIndex
